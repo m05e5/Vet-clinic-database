@@ -86,7 +86,8 @@ SELECT animals.name, visits.date FROM visits
 JOIN vets ON vets.id = visits.vet_id
 JOIN animals ON animals.id = visits.animals_id
 WHERE vets.name = 'Stephanie Mendez'
-AND visits.date BETWEEN (to_date('04/01/2020','mm/dd/yyyy')) AND (to_date('08/30/2000','mm/dd/yyyy'));
+AND visits.date BETWEEN (to_date('04/01/2020','mm/dd/yyyy')) 
+AND (to_date('08/30/2000','mm/dd/yyyy'));
 
 SELECT animals.name, COUNT(visits.animals_id) count_visits FROM visits
 JOIN vets ON vets.id = visits.vet_id
@@ -110,7 +111,7 @@ SELECT COUNT(visits.animals_id) FROM visits
 JOIN vets ON vets.id = visits.vet_id
 JOIN animals ON animals.id = visits.animals_id
 JOIN specialization ON specialization.vets_id = vets.id
-WHERE specialization.species_id <> animals.species_id;
+WHERE specialization.species_id NOT LIKE animals.species_id;
 
 SELECT species.name,COUNT(visits.animals_id) AS count_species FROM visits
 JOIN vets ON vets.id = visits.vet_id

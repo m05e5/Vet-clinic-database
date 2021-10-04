@@ -18,24 +18,24 @@ CREATE TABLE owners (
 );
 
 CREATE TABLE species (
-  ID integer GENERATED ALWAYS AS IDENTITY,
-  name varchar(255),
-  PRIMARY KEY (ID)
+ID integer GENERATED ALWAYS AS IDENTITY,
+name varchar(255),
+PRIMARY KEY (ID)
 );
 
 ALTER TABLE animals ADD FOREIGN KEY (species_id) REFERENCES species(id); 
 ALTER TABLE animals ADD FOREIGN KEY (owner_id) REFERENCES owners(id);
 
 CREATE TABLE vets (
-  ID integer GENERATED ALWAYS AS IDENTITY,
-  name varchar(255),
-  age integer,
-  date_of_graduation date;
-  PRIMARY KEY (ID)
+    ID integer GENERATED ALWAYS AS IDENTITY,
+    name varchar(255),
+    age integer,
+    date_of_graduation date;
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE specialization(
-   ID integer GENERATED ALWAYS AS IDENTITY,
+    ID integer GENERATED ALWAYS AS IDENTITY,
     species_id integer,
     vets_id integer,
     FOREIGN KEY(species_id) REFERENCES species (id),

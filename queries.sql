@@ -121,3 +121,5 @@ JOIN species ON species.id = animals.species_id
 WHERE vets.id = 2
 GROUP BY species.name
 ORDER BY count_species DESC LIMIT 1;
+
+SELECT COUNT(*) FROM visits where animal_id = 4;

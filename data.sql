@@ -165,3 +165,7 @@ INSERT INTO visits (animals_id, vet_id, date) VALUES (
   (SELECT id FROM vets WHERE name = 'William Tatcher'), 
   (to_date('11/01/2021','DD/MM/YYYY')) 
 );
+
+-- performace_audit
+
+INSERT INTO visits (animal_id, vet_id, date_of_visit) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;

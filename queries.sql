@@ -67,6 +67,7 @@ WHERE Escape_attempts = 0 AND owners.id = 5;
 SELECT animals.name,COUNT(owner_id),full_name FROM animals
 JOIN owners ON owners.id = animals.owner_id;
 
+
 SELECT animals.name,visits.date FROM animals
 JOIN visits ON animals.id = visits.animals_id
 JOIN vets ON vets.id = visits.vet_id

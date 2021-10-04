@@ -123,3 +123,4 @@ GROUP BY species.name
 ORDER BY count_species DESC LIMIT 1;
 
 SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;

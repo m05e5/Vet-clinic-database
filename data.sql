@@ -43,7 +43,7 @@ UPDATE animals
   SET owner_id=(SELECT id FROM owners WHERE full_name='Dean Winchester') WHERE name IN('Angemon', 'Boarmon');
 
 
-INSERT INTO vets (name,age,date_of_graduation) VALUES('Willian Tatcher', 45, (to_date('23/04/2000','DD/MM/YYYY' );
+INSERT INTO vets (name,age,date_of_graduation) VALUES('Willian Tatcher', 45, (to_date('23/04/2000','DD/MM/YYYY' )) );
 INSERT INTO vets (name,age,date_of_graduation) VALUES('Maisy Smith', 26, (to_date('17/01/2019','DD/MM/YYYY')) );
 INSERT INTO vets (name,age,date_of_graduation) VALUES('Stephanie Mendez', 64, (to_date('04/05/1981','DD/MM/YYYY')) );
 INSERT INTO vets (name,age,date_of_graduation) VALUES('Jack Harkness', 38, (to_date('08/06/2008','DD/MM/YYYY')) );
@@ -165,3 +165,8 @@ INSERT INTO visits (animals_id, vet_id, date) VALUES (
   (SELECT id FROM vets WHERE name = 'William Tatcher'), 
   (to_date('11/01/2021','DD/MM/YYYY')) 
 );
+
+-- performace_audit
+
+INSERT INTO visits (animal_id, vet_id, date_of_visit) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+INSERT INTO owners (full_name, email) SELECT 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';

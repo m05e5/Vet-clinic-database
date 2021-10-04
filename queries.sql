@@ -67,6 +67,7 @@ WHERE Escape_attempts = 0 AND owners.id = 5;
 SELECT animals.name,COUNT(owner_id),full_name FROM animals
 JOIN owners ON owners.id = animals.owner_id;
 
+
 SELECT animals.name,visits.date FROM animals
 JOIN visits ON animals.id = visits.animals_id
 JOIN vets ON vets.id = visits.vet_id
@@ -120,3 +121,7 @@ JOIN species ON species.id = animals.species_id
 WHERE vets.id = 2
 GROUP BY species.name
 ORDER BY count_species DESC LIMIT 1;
+
+SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;
+SELECT * FROM owners where email = 'owner_18327@mail.com';
